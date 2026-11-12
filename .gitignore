@@ -1,0 +1,6 @@
+wallet/
+kits/
+address.txt
+*.tar.gz
+transcripts*.tar.gz
+.env
