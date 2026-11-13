@@ -1,30 +1,25 @@
-# tiny-chess-01 starter
+# tiny-chess-01 entry
 
-A working entry to fork: `main.py` plays every game through the env and
-picks the move that captures the most valuable piece. It is a template,
-not a contender. Replace its one-line choice with a real search.
+A compact chess engine for the tiny-chess-01 make.fun bounty.
 
-## The size rule
+`main.py` unpacks and runs the engine from a compressed Latin-1 payload. The
+engine uses alpha-beta search with iterative deepening, quiescence, a
+transposition table, null-move pruning, late-move reductions, killer and
+history ordering, material and piece-square evaluation, pawn structure,
+passed pawns, rook files, mobility, and king safety. It searches a fixed node
+budget per move, never a clock, so every final replay is deterministic.
 
-- `main.py` is the whole engine: at most 4,096 bytes as committed,
-  Python 3.13, standard library only. It reads, imports or execs no other
-  file in the repository.
-- Every byte counts: comments, whitespace, docstrings.
-- Compression is allowed and counted. A `main.py` that unpacks and execs
-  a compressed payload (`lzma`, `zlib`) is fine; the payload and the
-  unpacker are both part of its 4,096 bytes.
-- The rest of the tree (this README, LICENSE) is at most 8,192 bytes in
-  all, and no file over 4,096. MIT, BSD, ISC and 0BSD licences fit.
-- Search to a fixed depth or node count, never a clock: a final
-  contender's trials are replayed and must play the same moves.
+## Run
 
-## Grade it locally
+The engine talks to the trial environment through `MAKEFUN_ENV_URL`. It reads
+nothing else from the repository. It uses only the Python 3.13 standard
+library.
 
-You need Docker and the `makefun` CLI. Download the competition's dev
-kit, unpack it, and from inside it run:
+## Size
 
-    makefun grade-local --kit . --bot <your repository> --driver docker
+- `main.py` is at most 4,096 bytes as committed, compressed payload included.
+- The rest of the tree is at most 8,192 bytes in total.
 
-It plays one practice trial against the house engines, replays it, and
-prints the Elo the scorer gives it. Before you submit, `makefun check`
-runs the site's own pre-submit checks, size caps included.
+## License
+
+MIT. See `LICENSE`.
